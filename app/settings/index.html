@@ -20,26 +20,30 @@
     </div>
     <br />
     <!-- theme -->
-    <div class="container-q">
+    <div class="container-q" style="visibility: hidden">
+      <!--underdev darkmode and lightmode ^^^ -->
       <h2>Dark Mode</h2>
-      <input type="checkbox" id="cbox1" value="first_checkbox" />
+      <input type="checkbox" id="dark-theme" value="first_checkbox" />
     </div>
     <!-- time-data -->
     <div class="container-q">
       <h2>Focus</h2>
-      <input type="text" placeholder="25:00" />
+      <input id="focus-time" type="text" value="25:00" />
     </div>
     <div class="container-q">
       <h2>Short Break</h2>
-      <input type="text" placeholder="05:00" />
+      <input id="shortbreak-time" type="text" value="05:00" />
     </div>
     <div class="container-q">
       <h2>Long Break</h2>
-      <input type="text" placeholder="15:00" />
+      <input id="longbreak-time" type="text" value="15:00" />
     </div>
 
-    <button class="save-btn">Save</button>
+    <button class="save-btn" id="save-btn">Save</button>
   </body>
 
+  <script defer>
+    require("../renderer.js");
+  </script>
   <script src="index.js"></script>
 </html>

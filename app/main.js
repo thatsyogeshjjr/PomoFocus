@@ -5,7 +5,7 @@ function createWindow() {
     width: 460,
     height: 275,
     frame: false,
-    resizable: false,
+    // resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -15,6 +15,7 @@ function createWindow() {
   mainWindow.loadFile("home/index.html");
   mainWindow.on("closed", () => {
     mainWindow = null;
+    app.quit();
   });
 
   ipcMain.on("closeApp", () => {
@@ -25,6 +26,7 @@ function createWindow() {
   });
   ipcMain.on("openSettings", () => {
     SettingWin = new BrowserWindow({
+      parent: mainWindow,
       height: 500,
       width: 350,
       frame: false,
@@ -36,10 +38,11 @@ function createWindow() {
     });
     SettingWin.loadFile("settings/index.html");
   });
-  ipcMain.on("closeSettings", () => {
+
+  ipcMain.on("closeSetting", () => {
     SettingWin.close();
   });
-  ipcMain.on("minSettings", () => {
+  ipcMain.on("minSetting", () => {
     SettingWin.minimize();
   });
 }

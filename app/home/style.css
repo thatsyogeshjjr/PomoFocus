@@ -8,6 +8,7 @@ body {
 }
 .button {
   margin: none;
+  outline: none;
 }
 
 /* titlebar styling */

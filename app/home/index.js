@@ -3,9 +3,18 @@ start_btn = document.getElementById("start-btn");
 timer_text = timer.innerHTML.split(":");
 
 //  These variables are to be loaded from user settings file
-focusTime = 25; // orig val = 25
-shortBreakTime = 5; // orid val = 5
-longBreakTime = 15; // orig val = 15
+// Get data from JSON file
+
+function loadJSON(filename = "") {
+  return JSON.parse(
+    fs.existsSync(filename) ? fs.readFileSync(filename).toString() : "null"
+  );
+}
+data = loadJSON("config.json");
+
+focusTime = parseInt(data.time_data.focus_time.split(":")[0]); // orig val = 25
+shortBreakTime = parseInt(data.time_data.short_break.split(":")[0]); // orid val = 5
+longBreakTime = parseInt(data.time_data.long_break.split(":")[0]); // orig val = 15
 
 // end user-variables
 
