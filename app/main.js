@@ -5,7 +5,7 @@ function createWindow() {
     width: 460,
     height: 275,
     frame: false,
-    // resizable: false,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -34,7 +34,7 @@ function createWindow() {
         nodeIntegration: true,
         contextIsolation: false,
       },
-      // resizable: false,
+      resizable: false,
     });
     SettingWin.loadFile("settings/index.html");
   });
