@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="titlebar">
+      <div class="name">PomoFocus!</div>
+      <div class="action-btn">
+        <div class="min" id="min">
+          <img src="images/min.png" alt="" />
+        </div>
+        <div class="close" id="close">
+          <img src="images/close.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="page">
+      <div class="left-content">
+        <!-- for debugging start -->
+        <div id="debug-text" style="visibility: collapse">focus time</div>
+        <!--for debugging end -->
+        <div><p class="timer" id="timer">25:00</p></div>
+        <div><button id="start-btn" class="button start">Start</button></div>
+      </div>
+      <div class="right-content">
+        <img src="images/time.png" id="focus-mode" alt="" />
+        <img src="images/short-break.png" id="shortbreak-mode"alt="" />
+        <img src="images/walker.png" id="longbreak-mode"alt="" />
+        <img src="images/settings.png" id="settings-mode"alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="index.js" defer></script>
+  <script src="mode-change.js"></script>
+  <script>
+    require("../renderer.js");
+  </script>
+</html>
