@@ -1,5 +1,9 @@
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 body {
@@ -91,14 +95,13 @@ body {
 }
 
 .right-content * {
-  transform: translateY(15px);
+  transform: translateY(8px);
   display: flex;
   justify-content: space-evenly;
   width: 35px;
   height: 35px;
   padding: 0px 15px;
   /* background-color: #242424; */
-
   margin-right: 5px;
   margin-left: 5px;
 }
@@ -109,7 +112,7 @@ body {
   align-items: flex-start;
 }
 
-.right-content > img:nth-child(even) {
+.right-content > *:nth-child(even) {
   align-self: flex-end;
 }
 /* right content stying -end*/
@@ -120,4 +123,12 @@ body {
 
 .bottom-rt-btn {
   margin-bottom: 30px;
+}
+
+.btn-change-cursor {
+  cursor: pointer;
+}
+
+.change-opacity {
+  opacity: 50%;
 }

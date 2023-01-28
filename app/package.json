@@ -1,19 +1,21 @@
 {
-  "name": "electron-quick-start",
+  "name": "pomofocus",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A standalone Pomodoro timer for your productivity needs.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "watch": "nodemon --exec electron ."
+    "watch": "nodemon --exec electron .",
+    "package-win": "electron-packager . pomofocus --overwrite  --platform=win32 --arch=ia32 --icon=home/images/icons/icon.ico --prune=true --out=build/win --version-string.CompanyName=JJR --version-string.FileDescription=\"Pomodoro App\" --version-string.ProductName=\"PomoFocus\"",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=home/images/icons/icon.svg --prune=true --out=build/mac",
+    "package-linux": "electron-packager . pomofocus --overwrite --platform=linux --arch=x64 --icon=home/images/icons/icon.png --prune=true --out=build/linux"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/thatsyogeshjjr/PomoFocus",
   "keywords": [
     "Electron",
     "Pomodoro"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "Yogesh Jajoria",
   "devDependencies": {
     "@electron/remote": "^2.0.9",
     "electron": "^22.0.2",

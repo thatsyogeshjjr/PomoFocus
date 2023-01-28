@@ -1,5 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
+const { ipcRenderer } = require("electron/renderer");
 let SettingWin;
+
+// SET ENV
+process.env.NODE_ENV = "production";
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 460,
@@ -24,7 +29,14 @@ function createWindow() {
   ipcMain.on("minApp", () => {
     mainWindow.minimize();
   });
+
   ipcMain.on("openSettings", () => {
+    const isSettingOpened = () =>
+      !SettingWin?.isDestroyed() && SettingWin?.isFocusable();
+    if (isSettingOpened()) {
+      SettingWin.close();
+    }
+
     SettingWin = new BrowserWindow({
       parent: mainWindow,
       height: 500,
