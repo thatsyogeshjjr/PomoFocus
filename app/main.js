@@ -59,6 +59,9 @@ function createWindow() {
   ipcMain.on("minSetting", () => {
     SettingWin.minimize();
   });
+  ipcMain.on("ReloadMain", () => {
+    mainWindow.reload();
+  });
 }
 
 app.on("ready", createWindow);
