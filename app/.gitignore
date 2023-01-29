@@ -1,5 +1,6 @@
 build
 release-builds
+dist
 
 node_modules
 nodemon.json

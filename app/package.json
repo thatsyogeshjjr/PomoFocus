@@ -8,7 +8,27 @@
     "watch": "nodemon --exec electron .",
     "package-win": "electron-packager . pomofocus --overwrite  --platform=win32 --arch=ia32 --icon=home/images/icons/icon.ico --prune=true --out=build/win --version-string.CompanyName=JJR --version-string.FileDescription=\"Pomodoro App\" --version-string.ProductName=\"PomoFocus\"",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=home/images/icons/icon.svg --prune=true --out=build/mac",
-    "package-linux": "electron-packager . pomofocus --overwrite --platform=linux --arch=x64 --icon=home/images/icons/icon.png --prune=true --out=build/linux"
+    "package-linux": "electron-packager . pomofocus --overwrite --platform=linux --arch=x64 --icon=home/images/icons/icon.png --prune=true --out=build/linux",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "pomofocus",
+    "extraFiles": [
+      "config.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "home/images/icons/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "home/images/icons/icon.ico",
+      "uninstallerIcon": "home/images/icons/icon.ico",
+      "license": "",
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "repository": "https://github.com/thatsyogeshjjr/PomoFocus",
   "keywords": [

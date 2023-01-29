@@ -14,6 +14,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      devTools: true,
     },
   });
 
@@ -45,6 +46,7 @@ function createWindow() {
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
+        devTools: true,
       },
       resizable: false,
     });

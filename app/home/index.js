@@ -11,7 +11,7 @@ function loadJSON(filename = "") {
   );
 }
 data = loadJSON("config.json");
-
+console.log(data);
 focusTime = parseInt(data.time_data.focus_time.split(":")[0]); // orig val = 25
 shortBreakTime = parseInt(data.time_data.short_break.split(":")[0]); // orid val = 5
 longBreakTime = parseInt(data.time_data.long_break.split(":")[0]); // orig val = 15
