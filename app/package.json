@@ -27,7 +27,7 @@
       "installerIcon": "home/images/icons/icon.ico",
       "uninstallerIcon": "home/images/icons/icon.ico",
       "license": "",
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": false
     }
   },
   "repository": "https://github.com/thatsyogeshjjr/PomoFocus",
