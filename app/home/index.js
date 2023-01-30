@@ -13,6 +13,7 @@ timer = document.getElementById("timer");
 timer.innerHTML = data.time_data.focus_time;
 start_btn = document.getElementById("start-btn");
 timer_text = timer.innerHTML.split(":");
+title = document.getElementById("title");
 // end user-variables
 
 // debuggin variables - start
@@ -30,10 +31,15 @@ function check_timer_text() {
   timer_text = timer.innerHTML.split(":");
   starting_min = parseInt(timer_text[0]);
   starting_sec = parseInt(timer_text[1]);
-  console.log(starting_min + ":" + starting_sec);
+  // console.log(starting_min + ":" + starting_sec);
 }
 
 workCount = 0;
+
+function timerEnd() {
+  alarm = new Audio("sound/alarm.mp3");
+  alarm.play();
+}
 
 function startTimer() {
   check_timer_text();
@@ -51,24 +57,32 @@ function startTimer() {
       second = 59;
       minute -= 1;
       if (minute <= -1) {
+        timerEnd();
         if (!isBreak) {
           if (workCount != 0 && workCount % 4 == 0) {
             // long break
+            ipcRenderer.send("ShowNotification_longbreak");
+            title.innerHTML = "Long Break";
             count_longbreak += 1;
             document.getElementById("debug-text").innerHTML = "long break";
+
             isBreak = true;
             minute = longBreakTime;
             second = 0;
           } else {
             // short break
             count_shortbreak += 1;
+            ipcRenderer.send("ShowNotification_shortbreak");
             document.getElementById("debug-text").innerHTML = "short break";
+            title.innerHTML = "Short Break";
             isBreak = true;
             minute = shortBreakTime;
             second = 0;
           }
         } else {
+          ipcRenderer.send("ShowNotification_focus");
           count_focus += 1;
+          title.innerHTML = "PomoFocus!";
           document.getElementById("debug-text").innerHTML = "focus time";
           isBreak = false;
           workCount += 1;
@@ -87,6 +101,13 @@ function stopTimer() {
   clearInterval(setIntervalFunction);
 }
 
+function PauseTimer() {
+  start_btn.innerHTML = "Start";
+  check_timer_text();
+  stopTimer();
+}
+
+let timerStarted = false;
 start_btn.addEventListener("click", () => {
   if (start_btn.innerHTML == "Start") {
     // Starting the Timer
@@ -94,9 +115,17 @@ start_btn.addEventListener("click", () => {
     check_timer_text();
     startTimer();
   } else {
-    // Pausing the Timer
-    start_btn.innerHTML = "Start";
+    PauseTimer();
+  }
+});
+
+// shortcut for pausing
+ipcRenderer.on("Pause-timer", () => {
+  if (start_btn.innerHTML == "Start") {
+    start_btn.innerHTML = "Pause";
     check_timer_text();
-    stopTimer();
+    startTimer();
+  } else {
+    PauseTimer();
   }
 });

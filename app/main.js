@@ -1,4 +1,11 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Notification,
+  globalShortcut,
+  webContents,
+} = require("electron");
 const { ipcRenderer } = require("electron/renderer");
 let SettingWin;
 
@@ -46,7 +53,7 @@ function createWindow() {
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
-        devTools: true,
+        devTools: false,
       },
       resizable: false,
     });
@@ -61,6 +68,40 @@ function createWindow() {
   });
   ipcMain.on("ReloadMain", () => {
     mainWindow.reload();
+  });
+
+  // Notifications
+  ipcMain.on("ShowNotification_focus", () => {
+    NOTIFICATION_TITLE = "PomoFocus!";
+    NOTIFICATION_BODY = "Time to focus up.";
+    new Notification({
+      title: NOTIFICATION_TITLE,
+      body: NOTIFICATION_BODY,
+    }).show();
+  });
+
+  ipcMain.on("ShowNotification_shortbreak", () => {
+    NOTIFICATION_TITLE = "PomoFocus!";
+    NOTIFICATION_BODY = "Short break started.";
+    new Notification({
+      title: NOTIFICATION_TITLE,
+      body: NOTIFICATION_BODY,
+    }).show();
+  });
+
+  ipcMain.on("ShowNotification_longbreak", () => {
+    NOTIFICATION_TITLE = "PomoFocus!";
+    NOTIFICATION_BODY = "Long break started";
+    new Notification({
+      title: NOTIFICATION_TITLE,
+      body: NOTIFICATION_BODY,
+    }).show();
+  });
+
+  // Shortcut keys
+  const electronLocalshortcut = require("electron-localshortcut");
+  electronLocalshortcut.register(mainWindow, "Space", () => {
+    mainWindow.webContents.send("Pause-timer");
   });
 }
 

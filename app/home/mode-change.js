@@ -5,6 +5,7 @@ timer = document.getElementById("timer");
 focus_mode = document.getElementById("focus-mode");
 shortbreak_mode = document.getElementById("shortbreak-mode");
 longbreak_mode = document.getElementById("longbreak-mode");
+title = document.getElementById("title");
 
 element_list = [
   document.getElementById("focus-mode"),
@@ -33,17 +34,20 @@ function remClassList() {
 
 focus_mode.addEventListener("click", () => {
   timer.innerHTML = data.time_data.focus_time;
+  title.innerHTML = "PomoFocus!";
   remClassList();
   focus_mode.classList.add("change-opacity");
 });
 
 shortbreak_mode.addEventListener("click", () => {
+  title.innerHTML = "Short Break";
   timer.innerHTML = data.time_data.short_break;
   remClassList();
   shortbreak_mode.classList.add("change-opacity");
 });
 
 longbreak_mode.addEventListener("click", () => {
+  title.innerHTML = "Long Break";
   timer.innerHTML = data.time_data.long_break;
   remClassList();
   longbreak_mode.classList.add("change-opacity");
