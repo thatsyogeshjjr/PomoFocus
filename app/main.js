@@ -3,10 +3,9 @@ const {
   BrowserWindow,
   ipcMain,
   Notification,
-  globalShortcut,
   webContents,
 } = require("electron");
-const { ipcRenderer } = require("electron/renderer");
+const electronLocalshortcut = require("./electron-localshortcut");
 let SettingWin;
 
 // SET ENV
@@ -99,7 +98,6 @@ function createWindow() {
   });
 
   // Shortcut keys
-  const electronLocalshortcut = require("electron-localshortcut");
   electronLocalshortcut.register(mainWindow, "Space", () => {
     mainWindow.webContents.send("Pause-timer");
   });

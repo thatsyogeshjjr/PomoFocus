@@ -36,6 +36,12 @@ function check_timer_text() {
 
 workCount = 0;
 
+document.addEventListener("keyup", (e) => {
+  if (e.key == " ") {
+    e.preventDefault();
+  }
+});
+
 function timerEnd() {
   alarm = new Audio("sound/alarm.mp3");
   alarm.play();

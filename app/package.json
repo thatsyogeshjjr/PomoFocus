@@ -1,6 +1,6 @@
 {
   "name": "pomofocus",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "A standalone Pomodoro timer for your productivity needs.",
   "main": "main.js",
   "scripts": {
@@ -40,7 +40,15 @@
     "@electron/remote": "^2.0.9",
     "audic": "^3.0.1",
     "electron": "^22.0.2",
-    "electron-localshortcut": "^3.2.1",
+    "electron-builder": "^23.6.0",
+    "electron-is-accelerator": "^0.2.0",
+    "electron-packager": "^17.1.1",
+    "keyboardevent-from-electron-accelerator": "^2.0.0",
+    "keyboardevents-areequal": "^0.2.2",
     "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "rollup": "^3.12.0",
+    "xo": "^0.53.1"
   }
 }
