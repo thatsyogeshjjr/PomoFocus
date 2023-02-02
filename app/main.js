@@ -80,7 +80,8 @@ function createWindow() {
     SettingWin.minimize();
   });
   ipcMain.on("ReloadMain", () => {
-    mainWindow.reload();
+    app.relaunch();
+    app.quit();
   });
 
   // Notifications
