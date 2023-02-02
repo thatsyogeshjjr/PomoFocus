@@ -7,6 +7,7 @@ function saveChangedData(data) {
   data.time_data.focus_time = document.getElementById("focus-time").value;
   data.time_data.short_break = document.getElementById("shortbreak-time").value;
   data.time_data.long_break = document.getElementById("longbreak-time").value;
+  data.always_on_top = document.getElementById("always-on-top").checked;
 
   return data;
 }
@@ -27,6 +28,9 @@ if (data.time_data.focus_time) {
   document.getElementById("focus-time").value = data.time_data.focus_time;
   document.getElementById("shortbreak-time").value = data.time_data.short_break;
   document.getElementById("longbreak-time").value = data.time_data.long_break;
+}
+if (data.always_on_top) {
+  document.getElementById("always-on-top").checked = data.always_on_top;
 }
 
 save_btn = document.getElementById("save-btn");

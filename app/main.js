@@ -11,6 +11,16 @@ let SettingWin;
 // SET ENV
 process.env.NODE_ENV = "production";
 
+// Get Data from JSON file
+const fs = require("fs");
+function loadJSON(filename = "") {
+  return JSON.parse(
+    fs.existsSync(filename) ? fs.readFileSync(filename).toString() : "null"
+  );
+}
+
+data = loadJSON("config.json");
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 460,
@@ -23,6 +33,10 @@ function createWindow() {
       devTools: true,
     },
   });
+
+  if (data.always_on_top) {
+    mainWindow.setAlwaysOnTop(true, "screen");
+  }
 
   mainWindow.loadFile("home/index.html");
   mainWindow.on("closed", () => {
